@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISA | Internal Portal</title>
+  
+  <!-- Sleek Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================= PUBLIC COVER SITE MASK ================= -->
+  <div id="public-cover-site" class="cover-layout">
+    <!-- Sleek Top Navbar -->
+    <header class="cover-header">
+      <div class="logo-area">
+        <div class="logo-shield">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h2>Intelligence Security Agency</h2>
+          <span class="tagline">AAE DOCUMENTATION</span>
+        </div>
+      </div>
+
+      <div class="actions-area">
+        <button id="agent-portal-btn" class="btn-secondary">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <span>Secure Portal Access</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="cover-hero">
+      <h1>Freedom of Information Act Reading Room</h1>
+      <div class="secured-by-aae">Secured by AAE</div>
+      <p>In accordance with 5 U.S.C. § 552, the Intelligence Security Agency | ISA provides authorized public access to declassified government records, investigative archives, and historical agency documents approved for civilian release.</p>
+    </main>
+
+    <!-- Reading Room Grid -->
+    <section class="public-grid-section">
+      <h2>DECLASSIFIED RECORDS [ PUBLIC ]</h2>
+      
+      <!-- Public Controls Flex Bar -->
+      <div class="public-controls-row">
+        <!-- Public Category Tabs Filter Bar -->
+        <div id="public-category-bar" class="public-category-bar">
+          <!-- Dynamic tabs populated via app.js -->
+        </div>
+        
+
+      </div>
+
+      <div class="public-grid">
+        <!-- Dynamically populated via app.js -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="public-footer">
+      <p>© 2026 Intelligence Security Agency. AAE DOCUMENTATION. All information published here is approved for public dissemination under official declassification guidelines.</p>
+    </footer>
+  </div>
+
+  <!-- ================= AUTHENTICATION INTERFACE ================= -->
+  <main id="auth-container" class="auth-panel hidden">
+    
+    <!-- Minimalist Connecting/Booting Card -->
+    <div id="boot-terminal" class="boot-screen">
+      <div class="cyber-hud-container">
+        <div class="cyber-shield-scanner">
+          <svg class="glowing-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <div class="scanner-line"></div>
+        </div>
+        <div class="cyber-loading-details">
+          <h3 id="cyber-hud-header" class="cyber-header-glow">ESTABLISHING ENCRYPTED DATALINK</h3>
+          <p id="boot-status-text" class="cyber-status-text">Synchronizing quantum encryption vectors...</p>
+        </div>
+        <div class="cyber-progress-wrapper">
+          <div class="cyber-bar-track">
+            <div id="cyber-progress-fill" class="cyber-bar-fill"></div>
+          </div>
+          <div class="cyber-progress-pct"><span id="cyber-progress-counter">0</span>% <span id="cyber-progress-status">CONNECTED</span></div>
+        </div>
+        <div class="cyber-diag-grid">
+          <div class="diag-card">
+            <span class="diag-lbl">GATEWAY PORT</span>
+            <span class="diag-val font-mono text-cyan">SECURE-3000</span>
+          </div>
+          <div class="diag-card">
+            <span class="diag-lbl">TUNNEL ENCRYPTION</span>
+            <span class="diag-val font-mono text-green">AES-256-GCM</span>
+          </div>
+          <div class="diag-card">
+            <span class="diag-lbl">BUFFER STATUS</span>
+            <span class="diag-val font-mono" id="cyber-diag-buffer">ISOLATING</span>
+          </div>
+          <div class="diag-card">
+            <span class="diag-lbl">CYBER SHIELD ACTIVE</span>
+            <span class="diag-val font-mono text-green" id="cyber-diag-shield">100% SECURE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sleek Modern Login Card -->
+    <div id="login-interface" class="login-box hidden">
+      <div class="login-header">
+        <div class="isa-badge">
+          <svg class="isa-logo-minimal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>ISA SECURE PORTAL</span>
+        </div>
+        <h1>Intelligence Security Agency</h1>
+        <p class="subtitle">Enter authentication credentials to access the document archive</p>
+      </div>
+
+      <div class="login-body">
+        
+        <!-- Passcode Display -->
+        <div class="passcode-zone">
+          <div class="passcode-input-wrapper">
+            <!-- Enabled keyboard inputs by removing readonly -->
+            <input type="password" id="passcode-display" maxlength="4" placeholder="••••" autofocus autocomplete="off">
+            <div id="unlock-alert" class="alert-box hidden">Access Verified</div>
+          </div>
+          
+          <!-- Numeric Keypad Grid (Styled as a clean minimal PIN pad) -->
+          <div class="keypad">
+            <button class="key-btn" data-val="1">1</button>
+            <button class="key-btn" data-val="2">2</button>
+            <button class="key-btn" data-val="3">3</button>
+            <button class="key-btn" data-val="4">4</button>
+            <button class="key-btn" data-val="5">5</button>
+            <button class="key-btn" data-val="6">6</button>
+            <button class="key-btn" data-val="7">7</button>
+            <button class="key-btn" data-val="8">8</button>
+            <button class="key-btn" data-val="9">9</button>
+            <button id="key-bypass" class="key-btn bypass-btn" data-val="bypass">Bypass</button>
+            <button class="key-btn" data-val="0">0</button>
+            <button id="key-clear" class="key-btn clear-btn" data-val="clear">Clear</button>
+          </div>
+        </div>
+
+        <div class="divider">
+          <span>OR DEVICE CREDENTIAL</span>
+        </div>
+
+        <!-- Biometric verification block -->
+        <div class="biometric-zone">
+          <button id="fingerprint-btn" class="biometric-btn" aria-label="Device Biometric Scanner">
+            <svg class="fingerprint-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <span id="scan-status">Use Device Security Key</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+
+  <!-- ================= MAIN AGENCY DASHBOARD ================= -->
+  <div id="dashboard-container" class="dashboard-panel hidden">
+    
+    <!-- Sleek Top Navbar -->
+    <header class="dashboard-header">
+      <div class="logo-area">
+        <div class="logo-shield">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h2>Intelligence Security Agency</h2>
+          <span class="tagline">INTERNAL DOCUMENT ARCHIVE</span>
+        </div>
+      </div>
+
+      <div class="system-stats">
+        <div class="stat-block">
+          <span class="label">SYSTEM STATUS</span>
+          <span class="val green-text">ONLINE</span>
+        </div>
+        <div class="stat-block hide-mobile">
+          <span class="label">ARCHIVE INTEGRITY</span>
+          <span class="val" id="vault-integrity-text">100%</span>
+        </div>
+        <div class="stat-block">
+          <span class="label">LOCAL TIME</span>
+          <span class="val" id="system-time">00:00:00</span>
+        </div>
+      </div>
+
+      <div class="actions-area">
+        <button id="lock-vault-btn" class="btn-secondary lock-btn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <span>Lock Portal</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Dashboard Layout Grid -->
+    <div class="dashboard-layout">
+      
+      <!-- Left Sidebar Navigator -->
+      <aside class="dashboard-sidebar">
+        
+        <!-- Archive Capacity statistics status widget -->
+        <div class="widget-panel stats-widget">
+          <h3>ARCHIVE CAPACITY</h3>
+          <div class="volume-capacity">
+            <div class="cap-labels">
+              <span>Used space</span>
+              <span id="storage-load-label">0.0 MB</span>
+            </div>
+            <div class="progress-bar-container">
+              <div id="storage-progress-bar" class="progress-bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Document Sector Filters -->
+        <div class="widget-panel">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 style="margin-bottom: 0;">Sectors</h3>
+            <button id="add-sector-btn" type="button" class="btn-helper" style="font-size: 10px; padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 3px; cursor: pointer; background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary);" title="Create Custom Folder">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <span>Add</span>
+            </button>
+          </div>
+          <!-- Dynamic sidebar filter buttons -->
+          <div id="sidebar-sectors-list" class="filter-buttons">
+            <!-- Dynamically populated buttons -->
+          </div>
+          <!-- Inline New Category Input (Hidden by default) -->
+          <div id="inline-sector-form" class="hidden" style="margin-top: 8px; display: flex; gap: 4px; animation: card-appear 0.15s ease;">
+            <input type="text" id="new-sector-input" placeholder="Folder name..." maxlength="20" style="padding: 4px 8px; font-size: 11.5px; border-radius: 4px;">
+            <button id="submit-sector-btn" class="btn-secondary" style="padding: 4px 8px; font-size: 11px; border-radius: 4px; color: var(--status-green);">&check;</button>
+            <button id="cancel-sector-btn" class="btn-secondary" style="padding: 4px 8px; font-size: 11px; border-radius: 4px;">&times;</button>
+          </div>
+        </div>
+
+        <!-- Countermeasures config -->
+        <div class="widget-panel toggles-widget">
+          <h3>Portal Settings</h3>
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <span>Session Auto-Lock</span>
+              <small>Auto Locks Portal After Inactivity</small>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggle-laser" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <span>Encrypt All Records</span>
+              <small>This will reveal all information if disabled</small>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggle-encrypt-all" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <button id="purge-mainframe-btn" class="btn-secondary block" style="margin-top: 14px; width: 100%; border: 1px solid rgba(239, 68, 68, 0.2); color: #ef4444; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 6px 10px; cursor: pointer; transition: all 0.2s;" title="Wipe all local browser storage overrides">
+            Purge Override Cache
+          </button>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div class="widget-panel action-compile-panel">
+          <button id="open-create-modal-btn" class="btn-primary btn-blue block">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            <span>Compile Record</span>
+          </button>
+        </div>
+
+      </aside>
+
+      <!-- Right Main Dashboard View -->
+      <main class="dashboard-main">
+
+        <!-- Documents shelf -->
+        <section class="secure-drive-shelf">
+          <div class="shelf-header">
+            <div class="title-wrap">
+              <h3>DOCUMENT DATABASE</h3>
+              <span id="files-count-badge" class="badge">0 FILES</span>
+            </div>
+            <div class="search-wrap">
+              <input type="text" id="drive-search" placeholder="Search documents... (Ctrl+K)">
+            </div>
+          </div>
+
+          <!-- Documents Grid -->
+          <div id="records-grid" class="records-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- Modern Sleek Timeline Audit Logs (Timeline Layout) -->
+        <section class="widget-panel log-panel">
+          <div class="log-panel-header">
+            <div class="log-panel-titles">
+              <span class="pulse-dot-green"></span>
+              <h3>ARCHIVE OPERATIONS AUDIT LOG</h3>
+            </div>
+            <span class="log-ver">LIVE SYNC</span>
+          </div>
+          <div class="log-viewport" id="activity-log-screen">
+            <!-- Dynamically added logs -->
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+  </div>
+
+
+  <!-- ================= MODALS & OVERLAYS ================= -->
+
+  <!-- Modal: Public Declassified Document Reader -->
+  <div id="public-read-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="header-desc">
+          <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-secondary); border-color: rgba(255,255,255,0.1);">DECLASSIFIED</span>
+          <h3 id="public-modal-doc-title">Document Title</h3>
+        </div>
+        <button class="close-modal-btn" data-modal="public-read-modal">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="security-meta-grid">
+          <div class="meta-item">
+            <span class="meta-lbl">Release Date:</span>
+            <span id="public-modal-release-date" class="meta-val">May 19, 2026</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-lbl">Reference ID:</span>
+            <span id="public-modal-ref-id" class="meta-val font-mono">FOIA-2026-X98</span>
+          </div>
+        </div>
+
+        <div class="decryption-console" style="height: 220px; position: relative;">
+          <!-- Simulated secure encrypted overlay for public modal -->
+          <div id="public-encrypt-overlay" class="encrypted-overlay hidden" style="border-radius: 5px;">
+            <div class="cyber-hud-container" style="max-width: 90%; border: none; box-shadow: none; background: transparent; padding: 0; gap: 12px;">
+              <div class="cyber-shield-scanner" style="width: 36px; height: 36px;">
+                <svg class="glowing-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <div class="scanner-line"></div>
+              </div>
+              <div class="cyber-loading-details">
+                <h3 id="public-hud-header" class="cyber-header-glow" style="font-size: 11px; margin-bottom: 2px;">ENCRYPTING RECORD BUFFER</h3>
+                <p id="public-boot-status-text" class="cyber-status-text" style="font-size: 10px;">Securing public gateway tunnel...</p>
+              </div>
+              <div class="cyber-progress-wrapper" style="gap: 4px; width: 100%;">
+                <div class="cyber-bar-track" style="height: 4px;">
+                  <div id="public-progress-fill" class="cyber-bar-fill" style="width: 0%;"></div>
+                </div>
+                <div class="cyber-progress-pct" style="font-size: 8.5px;"><span id="public-progress-counter">0</span>% SECURED</div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="public-modal-doc-content" style="white-space: pre-wrap; word-wrap: break-word; padding: 14px; height: 100%; overflow-y: auto; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
+            <!-- Content with redacted words goes here -->
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary close-modal-btn" data-modal="public-read-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1: Modern Document Viewport -->
+  <div id="decrypt-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="header-desc">
+          <span id="modal-classification-badge" class="badge badge-confidential">CONFIDENTIAL</span>
+          <h3 id="modal-doc-title">Document Title</h3>
+        </div>
+        <button class="close-modal-btn" data-modal="decrypt-modal">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Static metadata view -->
+        <div id="modal-meta-grid" class="security-meta-grid">
+          <div class="meta-item">
+            <span class="meta-lbl">Sector:</span>
+            <span id="modal-category" class="meta-val">Logs</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-lbl">Verification Hash:</span>
+            <span id="modal-hash" class="meta-val font-mono">0x00...00</span>
+          </div>
+        </div>
+
+        <!-- Editable metadata panel, shown only in edit mode -->
+        <div id="edit-meta-fields" class="hidden" style="margin-bottom: 14px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; animation: card-appear 0.2s ease;">
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label for="edit-doc-title" style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Record Title / Date</label>
+            <input type="text" id="edit-doc-title" placeholder="e.g. April 30, 2026" maxlength="32" autocomplete="off" style="padding: 6px 10px; font-size: 12.5px; margin-top: 4px;">
+          </div>
+          <div class="form-row" style="display: flex; gap: 12px; margin-top: 8px;">
+            <div class="form-group half" style="flex: 1; margin-bottom: 0;">
+              <label for="edit-doc-category" style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Sector Folder</label>
+              <select id="edit-doc-category" style="padding: 6px 10px; font-size: 12.5px; margin-top: 4px;">
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+            <div class="form-group half" style="flex: 1; margin-bottom: 0;">
+              <label for="edit-doc-classification" style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Security Level</label>
+              <select id="edit-doc-classification" style="padding: 6px 10px; font-size: 12.5px; margin-top: 4px;">
+                <option value="unclassified">Unclassified</option>
+                <option value="confidential">Confidential</option>
+                <option value="secret">Secret</option>
+                <option value="classified">Classified</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="decryption-console">
+          <div class="console-label-bar">
+            <span>Encrypted Document Buffer</span>
+            <span id="decryption-percentage" class="text-locked">LOCKED</span>
+          </div>
+          
+          <!-- Plain text helper buttons row -->
+          <div id="edit-helper-bar" class="textarea-helper-bar hidden" style="padding: 6px 12px; border-bottom: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.015);">
+            <button type="button" class="btn-helper" id="edit-redact-btn" title="Black Out Text">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+              <span>Black Out</span>
+            </button>
+          </div>
+          
+          <div class="cipher-viewport">
+            <!-- Simulated secure encrypted block overlay -->
+            <div id="secure-encrypted-overlay" class="encrypted-overlay">
+              <div class="encrypted-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                <span>Document Encrypted under Archive Protocol</span>
+              </div>
+            </div>
+            <!-- Cipher text container -->
+            <pre id="cipher-text-display" class="ciphertext-display"></pre>
+            
+            <!-- Plain text container -->
+            <textarea id="plain-text-edit" class="plaintext-editor hidden" spellcheck="false"></textarea>
+          </div>
+        </div>
+
+        <!-- Custom modern circular progress ring solver -->
+        <div id="decrypt-spinner-container" class="decrypt-spinner-wrapper hidden">
+          <div class="small-saas-spinner"></div>
+          <span>Decrypting archive cache...</span>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="run-decryption-btn" class="btn-primary btn-blue">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <span>Decrypt Document</span>
+        </button>
+        <button id="toggle-edit-btn" class="btn-secondary hidden">
+          <span>Edit File</span>
+        </button>
+        <button id="save-edit-btn" class="btn-primary btn-blue hidden">
+          <span>Re-Encrypt & Save</span>
+        </button>
+        <button class="btn-secondary close-modal-btn" data-modal="decrypt-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal 2: Create Classified File -->
+  <div id="create-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Compile Archive Record</h3>
+        <button class="close-modal-btn" data-modal="create-modal">&times;</button>
+      </div>
+
+      <form id="create-doc-form" class="modal-body">
+        
+        <div class="form-group">
+          <label for="doc-title">Record Title / Date</label>
+          <input type="text" id="doc-title" required placeholder="e.g. April 30, 2026" maxlength="32" autocomplete="off">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="doc-category">Sector Folder</label>
+            <select id="doc-category">
+              <option value="documents" selected>Documents</option>
+              <option value="intel">Classified Intel</option>
+            </select>
+          </div>
+
+          <div class="form-group half">
+            <label for="doc-classification">Security Level</label>
+            <select id="doc-classification">
+              <option value="unclassified">Unclassified</option>
+              <option value="confidential" selected>Confidential</option>
+              <option value="secret">Secret</option>
+              <option value="classified">Classified</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label for="doc-content" style="margin-bottom: 0;">Record Content (Decrypted Plaintext)</label>
+            <div class="textarea-helper-bar">
+              <button type="button" class="btn-helper" id="compile-redact-btn" title="Black Out Text">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                <span>Black Out</span>
+              </button>
+            </div>
+          </div>
+          <textarea id="doc-content" required placeholder="Enter the sensitive text details to encrypt and save..." rows="5" spellcheck="false"></textarea>
+        </div>
+
+        <div id="compiling-indicator" class="decrypt-spinner-wrapper hidden" style="margin-top: 12px;">
+          <div class="small-saas-spinner"></div>
+          <span id="compiling-text">Saving to local index...</span>
+        </div>
+
+        <div class="modal-footer" style="padding: 12px 0 0 0; border: none; background: transparent;">
+          <button type="submit" id="submit-create-btn" class="btn-primary btn-blue">
+            <span>Encrypt & Save</span>
+          </button>
+          <button type="button" class="btn-secondary close-modal-btn" data-modal="create-modal">Cancel</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Sleek Deletion/Shredder Overlay -->
+  <div id="shredder-overlay" class="modal-overlay hidden">
+    <div class="shredder-alert-box">
+      <div class="spinner-container" style="margin-bottom: 12px;">
+        <div class="saas-spinner"></div>
+      </div>
+      <h2 id="shredder-title">Deleting Document</h2>
+      <p id="shredder-log-file" class="subtitle">Purging archive record from storage index...</p>
+      
+      <div class="progress-bar-container" style="margin-top: 16px;">
+        <div id="shredder-progress-fill" class="progress-bar" style="width: 0%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
