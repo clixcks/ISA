@@ -1,0 +1,19 @@
+{
+  "name": "isa-secure-portal",
+  "version": "1.0.0",
+  "description": "ISA (Intelligence Security Agency) Mock Secure Vault Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "cyberpunk",
+    "vault",
+    "secure",
+    "document-locker",
+    "isa"
+  ],
+  "author": "ISA Cyber Operations",
+  "license": "MIT"
+}
